@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" width="device-width">
+        <link type="text/css" rel="stylesheet" href="camera.css">
+        <title>Camera</title>
+        <script src="Jquery/jquery-mobile.js" type="text/javascript">
+        	function takePhoto(){
+				 navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+       			 destinationType: destinationType.DATA_URL });
+			}
+			
+			function getPhoto(source) {
+      			// Retrieve image file location from specified source
+      			navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+        		destinationType: destinationType.FILE_URI,
+        		sourceType: source });
+    		}
+			
+			function onFail(message) {
+				alert('Failed because: ' + message);
+			}
+        </script>    
+	</head>
+    
+    <body>
+    	<input type="button" value="Camera" onClick="takePhoto();">
+        <br />
+        <input type="button" value="Camera Roll" onClick="getPhoto(pictureSource.PHOTOLIBRARY);">
+        
+    </body>
+</html>
